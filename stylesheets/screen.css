@@ -121,3 +121,54 @@ body {
 .White{
 	color: #ffffff;
 }
+#header{
+	background-image: url('../images/text.jpg');
+	background-size: cover;
+	background-position-y: center;
+	filter: grayscale(100%);	
+	padding: 8px;
+	height: 100px;
+	
+}
+#header h1{
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+#header h2{
+	margin-top: 0px;
+}
+#menu{
+	width: 680;
+	height: 40px;
+	background: linear-gradient(#ddd,#333,#000);	
+	list-style: none;	
+	padding-top: 10px;
+	padding-right: 15px;
+	margin-top: 5px;
+}
+#menu hl{		
+	display: flex;	
+	justify-content: space-between;
+	
+	
+}
+#menu a{
+	color: #ddd;	
+	list-style: none;
+}
+#middle form{
+	margin-left: 10px;
+	
+	
+}
+#middle h3{
+	background: linear-gradient(#ddd,#666,#333,#000);
+	color: #ddd;
+	width: 160px;
+	height: 35px;
+	display: flex;
+	align-items: center;
+}
+.middle rightside{
+	float: right;
+}
