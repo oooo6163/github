@@ -110,7 +110,7 @@ body {
 	text-decoration: none;
 }
 
-#footer {
+#footes{
 	height: 70px;
 	background: linear-gradient(to bottom, #000000, #8d8d8d);
 	text-align: center;
@@ -138,7 +138,7 @@ body {
 	margin-top: 0px;
 }
 #menu{
-	width: 680;
+	width: 745px;
 	height: 40px;
 	background: linear-gradient(#ddd,#333,#000);	
 	list-style: none;	
@@ -156,19 +156,36 @@ body {
 	color: #ddd;	
 	list-style: none;
 }
-#middle form{
-	margin-left: 10px;
-	
-	
+#menu a:hover{
+	color:white;
+	background:linear-gradient(#000,#666);
 }
-#middle h3{
-	background: linear-gradient(#ddd,#666,#333,#000);
-	color: #ddd;
-	width: 160px;
-	height: 35px;
-	display: flex;
-	align-items: center;
+#content{
+	width:800px;
+	background-color:#fff;
 }
-.middle rightside{
-	float: right;
+#leftside{
+	float:left;
+	width:200px;
+	padding-left:10px;
+}
+	#leftside h2 {
+		padding: 3px;
+		background: linear-gradient(rgb(13,13,13),rgb(123,121,121))padding-box,
+		linear-gradient(to right, rgb(129, 129, 130), rgb(27, 27, 28)) border-box;
+		border-radius:20em;
+		border:4px solid transparent;
+	}
+	#rightside{
+		float:left;
+		width:560px;
+		margin-left:30px;
+	}
+#footer{
+	clear:both;
+	width:800px;
+	background:linear-gradient(#666,#000);
+	color:#fff;
+	text-align:center;
+	padding-top:10px;
 }
