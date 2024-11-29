@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll trigger</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    header {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        z-index: 1000;
+        background: linear-gradient(to top, #fff, transparent);
+    }
+
+    header img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+    }
+
+    #title {
+        position: relative;
+        color: #fff;
+        font-size: 10em;
+    }
+
+    .content {
+        position: relative;
+        padding: 100px;
+    }
+
+    .content h2 {
+        font-size: 3.5em;
+        margin-bottom: 10px;
+        color: navy;
+    }
+
+    .content p {
+        font-size: 1.2em;
+        color: navy;
+    }
+    #box1{
+        position: relative;
+        display: flex;
+        width: 100px;
+        height: 100px;
+        border-radius: 35%;
+        background: rgb(13, 90, 158);
+    }
+</style>
+
+<body>
+    <header>
+        <img src="images/bg.jpg" id="bg">
+        <h2 id="title">Mountains</h2>
+        <img src="images/man.png" id="man">
+        <img src="images/clouds_1.png" id="cloud1">
+        <img src="images/clouds_2.png" id="cloud2">
+        <img src="images/mountain_left.png" id="m_left">
+        <img src="images/mountain_right.png" id="m_right">
+    </header>
+    <div class="content">
+        <h2>ScrollTrigger is Good!</h2>
+        <div id="box1"></div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat alias aliquid repudiandae, fuga optio magni
+            nesciunt vitae corporis necessitatibus dolor? Fugiat, facilis nihil alias vel animi quisquam nesciunt sequi
+            nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad odit repudiandae eos, eligendi magni
+            doloremque cum. Voluptatibus ipsum corrupti velit incidunt molestias totam, ex, excepturi tempora fuga vel,
+            optio eveniet.
+           
+            Qui, officia? Nisi et obcaecati animi itaque adipisci! Sequi aliquam id nam amet expedita fugiat nisi
+            cumque, dolorum reprehenderit totam inventore distinctio consequuntur a autem aut odio pariatur eius! Totam?
+        </p>
+    </div>
+
+    <script>
+        //gsap.registerPlugin(ScrollTrigger)
+        gsap.to("#bg",{
+            scrollTrigger:{
+                trigger: "#title",
+                start: "top 250px", //"top center", "10px 80%"
+                end: "bottom 100px",//"+=200"
+                toggleActions: "restart restart pause pause",//play, pause, resume, reverse, complete, restart, reset, or none.
+                scrub: 1, //1 sec, or  srub:true start到end的時間
+                //horizontal: true,
+                markers: true
+            },
+            scale: 2,
+            duration: 5//no use if scrub:1
+        });
+        //toggleActions:
+        //第一個參數代表: onEnter - 向下滾動，目標啟動點 與 視窗捲軸開始
+        //第二個參數代表: onLeave - 向下滾動，目標結束點 與 視窗捲軸結束
+        //第三個參數代表: onEnterBack - 向上滾動，目標結束點 與 視窗捲軸結束
+        //第四個參數代表: onLeaveBack - 向上滾動，目標啟動點 與 視窗捲軸開始
+         
+        gsap.to("#m_left",{
+            x: -300,
+            scrollTrigger:{
+                trigger: "#title",
+                start: "top 250px", //"top center", "10px 80%"
+                end: "bottom 100px",//"+=200"
+                toggleActions: "restart restart pause pause",//play, pause, resume, reverse, complete, restart, reset, or none.
+                scrub: 1
+            }
+        })
+
+        gsap.to("#m_right",{
+            x: 300,
+            scrollTrigger:{
+                trigger: "#title",
+                start: "top 250px", //"top center", "10px 80%"
+                end: "bottom 100px",//"+=200"
+                toggleActions: "restart restart pause pause",//play, pause, resume, reverse, complete, restart, reset, or none.
+                scrub: 1
+            }
+        })
+        gsap.to("#man",{
+           
+            scrollTrigger:{
+                trigger: "#title",
+                start: "top 250px", //"top center", "10px 80%"
+                end: "bottom 100px",//"+=200"
+                toggleActions: "restart restart pause pause",//play, pause, resume, reverse, complete, restart, reset, or none.
+                scrub: 1
+            },
+            scale: 2
+        })
+
+    </script>
+</body>
+
+</html>
