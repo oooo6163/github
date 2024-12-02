@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>finalwork</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/Final.css" rel="stylesheet">
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+
+</head>
+
+<body id="page-top" class="index">
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            
+            <a class="navbar-brand" href="#" >Logo</a>
+
+            <div class="search-bar">
+                <form class="d-flex">
+                    <input class="form-control me-2" type="text" placeholder="Search">
+                    <button class="btn btn-dark" type="button">Search</button>
+                </form>
+            </div>
+
+            <!-- Offcanvas Sidebar -->
+            <div class="offcanvas offcanvas-end offcanvas-sm" id="demo">
+                <div class="offcanvas-header">
+                    <h1 class="offcanvas-title">導覽</h1>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+                    
+                </div>
+                <div class="offcanvas-body">
+                    <p>Some text lorem ipsum.</p>
+                    <p>Some text lorem ipsum.</p>
+                    <button class="btn btn-secondary" type="button">A Button</button>
+                </div>
+            </div>
+
+            <!-- Button to open the offcanvas sidebar -->
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+
+    </nav>
+
+    <!--Header-->
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="2"></button>
+        </div>
+        <!-- Slides -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/img1.jpg" alt="building" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="img/img2.jpg" alt="building" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="img/img3.jpeg" alt="building" class="d-block w-100">
+            </div>
+        </div>
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!--menu-->
+    <div class="menu">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">分類一</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">分類二</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">分類三</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">分類四</a>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/agency.min.js"></script>
+    <script src="js/bs5vue.js"></script>
+</body>
+
+</html>
