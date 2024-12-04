@@ -67,3 +67,19 @@
 #mainNav{
     margin-bottom: 20px;
 }
+a img {
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: transform 0.3s, border-color 0.3s;
+}
+a img:hover {
+    transform: scale(1.05);
+    border-color: #007bff;
+}
+.footer{
+    background-color: black;
+    color: aliceblue;
+    display: flex;
+    justify-content: center; /* 水平置中 */
+    align-items: center; /* 垂直置中 */
+}
