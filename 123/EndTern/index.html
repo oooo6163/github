@@ -110,37 +110,19 @@
         </ul>
     </div>
     <!--shop-->
-    <div class="shop">
-        <div class="row">
-            <!-- 第一張圖片，按鈕連結至目標1 -->
-            <div class="col-12 col-sm-6 col-md-4">
-                <a href="#">
-                    <img src="img/img1.jpg" class="img-fluid" alt="1">
-                </a>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus laboriosam, voluptatum cumque
-                    consectetur voluptatem, consequuntur dicta totam ratione quam voluptas obcaecati. Libero delectus
-                    quidem ea repudiandae veritatis sequi neque ex!</p>
-            </div>
-            <!-- 第二張圖片，按鈕連結至目標2 -->
-            <div class="col-12 col-sm-6 col-md-4">
-                <a href="#">
-                    <img src="img/img2.jpg" class="img-fluid" alt="2">
-                </a>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis recusandae ea ullam numquam omnis
-                    delectus, expedita nulla dolore magni adipisci repellendus pariatur facilis, minima odio laborum
-                    alias quisquam, quo nesciunt!</p>
-            </div>
-            <!-- 第三張圖片，按鈕連結至目標3 -->
-            <div class="col-12 col-sm-6 col-md-4">
-                <a href="#">
-                    <img src="img/img3.jpeg" class="img-fluid" alt="3">
-                </a>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur autem eius officiis beatae ex
-                    officia excepturi. Veniam aspernatur voluptate eaque deserunt quam sed rerum itaque, repellendus
-                    praesentium, debitis non reiciendis!</p>
+    <section id="shop" class="shop">
+        <div class="container">
+            <div class="row">
+                <!-- 使用 v-for 循環每個 Tile 項目 -->
+                <div v-for="item in Tile" :key="item.text" class="col-12 col-sm-6 col-md-4">
+                    <a href="#">
+                        <img :src="item.img" class="img-fluid" alt="1">
+                    </a>
+                    <p>{{item.text}}</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
     <!--footer-->
     <div class="footer">
         <p>Copyright: 2011. Flash Templates </p>
@@ -165,7 +147,8 @@
 
     <!-- Theme JavaScript -->
     <script src="js/agency.min.js"></script>
-    <script src="js/bs5vue.js"></script>
+    <!--檔名-->
+    <script src="js/bs5vue1.js"></script>
 </body>
 
 </html>
