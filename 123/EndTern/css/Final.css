@@ -11,10 +11,14 @@
     text-transform: uppercase;
     text-decoration: none;
     color: beige;
+    transition: color 0.3s;
     margin-bottom: 10px;
+    
 }
 
-
+.navbar-brand:hover {
+    color: black; /* 鼠標懸停時的文字顏色 */
+}
 .search-bar {
     display: flex;
     justify-content: center; /* 水平置中 */
@@ -27,11 +31,15 @@
     width: 200px; /* 搜尋框固定寬度 */
 }
 .btn{
-    background-color: azure;
+    background-color: rgb(255, 251, 240);
     color: black;
+    
 }
+
+
+
 .carousel-item img {
-    height: 400px; /* 固定幻燈片高度 */
+    height: 600px; /* 固定幻燈片高度 */
     object-fit: cover; /* 確保圖片填滿而不變形 */
 }
 
