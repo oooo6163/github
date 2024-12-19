@@ -36,13 +36,18 @@
     
 }
 
-
+.custom-width {
+    width: 400px; /* 自定義寬度 */
+}
 
 .carousel-item img {
     height: 600px; /* 固定幻燈片高度 */
     object-fit: cover; /* 確保圖片填滿而不變形 */
 }
-
+#carousel{
+    margin-left: 100px;
+    margin-right: 100px;
+}
 .carousel-caption {
     background-color: rgba(0, 0, 0, 0.5); /* 黑色半透明背景 */
     padding: 20px;
@@ -82,7 +87,7 @@ a img {
 }
 a img:hover {
     transform: scale(1.05);
-    border-color: #007bff;
+    border-color: #000000;
 }
 .footer{
     background-color: black;
@@ -90,4 +95,34 @@ a img:hover {
     display: flex;
     justify-content: center; /* 水平置中 */
     align-items: center; /* 垂直置中 */
+}
+@media screen and  (max-width: 900px){
+    #carousel{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+@media screen and (max-width: 600px) {
+    #carousel {
+        margin-left: 1px;
+        margin-right: 10px;
+    }
+}
+.filter {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  #category {
+    padding: 5px;
+    font-size: 16px;
+  }
+  .text-center {
+    font-size: 18px;
+    color: gray;
+    margin-top: 20px;
+}
+.nav p{
+    margin-bottom: 0;
+    margin-top: 8px;
 }

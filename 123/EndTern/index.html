@@ -35,11 +35,16 @@
             <a class="navbar-brand" href="#">超無用商品雜貨店</a>
 
             <div class="search-bar">
-                <form class="d-flex">
-                    <input class="form-control me-2" type="text" placeholder="Search">
-                    
-                </form>
-            </div>
+    <form class="d-flex">
+        <input 
+            class="form-control me-2 custom-width" 
+            type="text" 
+            placeholder="Search" 
+            v-model="searchQuery" 
+            @input="filterBySearch" 
+        >
+    </form>
+</div>
 
             <!-- Offcanvas Sidebar -->
             <div class="offcanvas offcanvas-end offcanvas-sm" id="demo">
@@ -94,36 +99,54 @@
         </button>
     </div>
 
-    <!--menu-->
-    <div class="menu">
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#">分類一</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">分類二</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">分類三</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">分類四</a>
-            </li>
-        </ul>
-    </div>
+
+
     <!--shop-->
     <section id="shop" class="shop">
-        <div class="container">
-            <div class="row">
-                <!-- 使用 v-for 循環每個 Tile 項目 -->
-                <div v-for="item in Tile" :key="item.text" class="col-12 col-sm-6 col-md-4">
-                    <a href="#">
-                        <img :src="item.img" class="img-fluid" alt="1">
+        <!--menu-->
+        <div class="menu">
+            <ul class="nav">
+                <p>熱門分類</p>
+                <li v-for="category in popularCategories" :key="category" class="nav-item">                   
+                    <a 
+                      class="nav-link" 
+                      href="#" 
+                      @click.prevent="filterByCategory(category)" 
+                      :class="{ active: selectedCategory === category }">                      
+                      {{ category }}
                     </a>
-                    <p>{{item.text}}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="filter">
+            <label for="category">選擇分類：</label>
+            <select id="category" v-model="selectedCategory">
+                <option value="">全部</option>
+                <option value="分類一">分類一</option>
+                <option value="分類二">分類二</option>
+                <option value="分類三">分類三</option>
+                <option value="分類四">分類四</option>
+                <option value="分類五">分類五</option>
+                <option value="分類六">分類六</option>
+                <option value="分類七">分類七</option>
+                <option value="分類八">分類八</option>
+            </select>
+        </div>
+        <div class="container">
+            <div class="row" v-if="filteredTiles.length > 0">
+                <div v-for="item in filteredTiles" :key="item.text" class="col-12 col-sm-6 col-md-4">
+                    <a href="#">
+                        <img :src="item.img" class="img-fluid" alt="商品圖片">
+                    </a>
+                    <p>{{ item.text }}</p>
+                    <p>${{ item.price }}</p>
                 </div>
             </div>
+            <div v-else class="text-center">
+                <p>此分類下沒有商品。</p>
+            </div>
         </div>
+        
     </section>
     <!--footer-->
     <div class="footer">
@@ -151,6 +174,7 @@
     <script src="js/agency.min.js"></script>
     <!--檔名-->
     <script src="js/bs5vue1.js"></script>
+
 </body>
 
 </html>
