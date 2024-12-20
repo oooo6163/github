@@ -82,18 +82,37 @@
     justify-content: center; /* 水平置中 */
     align-items: center; /* 垂直置中 */
     margin-top: 20px; /* 與其他內容保持距離 */
+    background-color: antiquewhite;
 }
 #mainNav{
     margin-bottom: 20px;
 }
 a img {
-    border: 2px solid transparent;
+    width: 300px; /* 固定寬度 */
+    height: 300px; /* 固定高度 */
+    object-fit: cover; /* 確保圖片填滿容器，且保持比例 */
+    border: 1px solid transparent;
     border-radius: 8px;
     transition: transform 0.3s, border-color 0.3s;
+ 
 }
+
 a img:hover {
     transform: scale(1.05);
     border-color: #000000;
+}
+a p{
+    text-decoration: none; /* 移除下劃線 */
+    color: black; /* 設置文字顏色 */ 
+    display: inline-block;    
+    transition: none; /* 禁止過渡效果 */    
+    transition: border-color 0.3s; /* 增加過渡效果 */
+}
+a p:focus, /* 當文字獲得焦點時 */
+a p:hover, /* 當滑鼠懸停時 */
+a p:active { /* 當文字被點擊時 */
+    text-decoration: underline; /* 顯示下劃線 */
+    color: rgb(0, 0, 0); /* 選中時可改變文字顏色 */
 }
 .footer{
     background-color: black;
@@ -114,9 +133,50 @@ a img:hover {
         margin-right: 10px;
     }
 }
+
+/* 預設隱藏搜索框 */
+.search-box {
+    display: none;
+}
+
+/* 小螢幕樣式 */
+@media (max-width: 768px) {
+    .search-button {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+        color: #ffffff;
+        background: none;
+        border: none;
+    }
+
+    .search-box {
+        width: 100%;
+        display: none;
+        /* 預設隱藏 */
+        margin-top: 10px;
+    }
+
+    .search-container.active .search-box {
+        display: block;
+    }
+}
+
+/* 在大螢幕時始終顯示搜索框 */
+@media (min-width: 769px) {
+    .search-button {
+        display: none;
+    }
+
+    .search-box {
+        display: block;
+    }
+}
+
 .filter {
     margin-bottom: 20px;
     text-align: center;
+    background-color: antiquewhite;
   }
   
   #category {
@@ -132,3 +192,11 @@ a img:hover {
     margin-bottom: 0;
     margin-top: 8px;
 }
+.page{
+margin-bottom: 50px;
+}
+.page img{
+    margin-bottom: 25px;
+}
+
+

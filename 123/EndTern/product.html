@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>finalwork</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap Core CSS -->
+    <title>商品詳情</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -16,7 +14,10 @@
         type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Theme CSS -->
     <link href="css/Final.css" rel="stylesheet">
 
@@ -24,15 +25,14 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
-
 </head>
 
-<body id="page-top" class="index">
+<body>
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container">
 
-            <a class="navbar-brand" href="#">超無用商品雜貨店</a>
+            <a class="navbar-brand" href="index.html">超無用商品雜貨店</a>
 
             <div class="search-bar">
                 <form class="d-flex">
@@ -64,45 +64,9 @@
         </div>
 
     </nav>
-    <div id="dynamic-search-box" class="d-none">
-        <form class="d-flex justify-content-center">
-            <input class="form-control rounded-pill" type="text" placeholder="Search" style="max-width: 500px;">
-        </form>
-    </div>
-    <!--Header-->
-    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
-        <!-- Indicators -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#carousel" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#carousel" data-bs-slide-to="2"></button>
-        </div>
-        <!-- Slides -->
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="img/img1.jpg" alt="building" class="d-block w-100">
-            </div>
-            <div class="carousel-item">
-                <img src="img/img2.jpg" alt="building" class="d-block w-100">
-            </div>
-            <div class="carousel-item">
-                <img src="img/img3.jpeg" alt="building" class="d-block w-100">
-            </div>
-        </div>
-        <!-- Controls -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
-    </div>
-
-
 
     <!--shop-->
     <section id="shop" class="shop">
-        
         <!--menu-->
         <div class="menu">
             <ul class="nav">
@@ -129,81 +93,45 @@
                 <option value="分類八">分類八</option>
             </select>
         </div>
-        <div class="container">
-            <div class="row" v-if="filteredTiles.length > 0">
-                <div v-for="item in filteredTiles" :key="item.text" class="col-12 col-sm-6 col-md-4">
 
-                    <a :href="'product.html?id=' + item.id">
-                        <img :src="item.img" class="img-fluid" alt="商品圖片">
-                        <br>
-                        <p>{{ item.text }}</p>
-                    </a>
-
-                    <p>${{ item.price }}</p>
-
-                </div>
-            </div>
-            <div v-else class="text-center">
-                <p>此分類下沒有商品。</p>
-            </div>
-        </div>
 
     </section>
+    <div id="product-details" class="container mt-5">
+        <div class="page">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <img :src="product.img" class="img-fluid" alt="商品圖片">
+
+                    <p>價格：${{ product.price }}</p>
+                    <p>分類：{{ product.category }}</p>
+                </div>
+
+
+                <div class="col-md-6 col-sm-12">
+
+                    <h1>{{ product.text }}</h1>
+                </div>
+                <div class="col-6">
+                    <a href="index.html" class="btn btn-secondary">返回</a>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
     <!--footer-->
     <div class="footer">
         <p>Copyright: 2011. Flash Templates </p>
         <p>Privacy Policy | Terms of Use | XHTML | CSS</p>
     </div>
-
-
-    <!---->
-    <script>
-        // JavaScript 控制切換搜索框
-        const searchButton = document.getElementById("search-button");
-        const searchContainer = document.querySelector(".search-container");
-
-        searchButton.addEventListener("click", () => {
-            searchContainer.classList.toggle("active"); // 切換顯示搜索框
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const searchButton = document.getElementById("search-button");
-            const dynamicSearchBox = document.getElementById("dynamic-search-box");
-
-            // 點擊搜尋按鈕切換搜尋框顯示/隱藏
-            searchButton.addEventListener("click", () => {
-                dynamicSearchBox.classList.toggle("d-none");
-            });
-
-            // 點擊其他地方關閉搜尋框
-            document.addEventListener("click", (event) => {
-                if (!dynamicSearchBox.contains(event.target) && !searchButton.contains(event.target)) {
-                    dynamicSearchBox.classList.add("d-none");
-                }
-            });
-        });
-
-    </script>
-
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <!-- Theme JavaScript -->
     <script src="js/agency.min.js"></script>
     <!--檔名-->
     <script src="js/bs5vue1.js"></script>
-
 </body>
 
 </html>
