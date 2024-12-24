@@ -35,11 +35,16 @@
             <a class="navbar-brand" href="#">超無用商品雜貨店</a>
 
             <div class="search-bar">
-                <form class="d-flex">
-                    <input class="form-control me-2 custom-width" type="text" placeholder="Search" v-model="searchQuery"
-                        @input="filterBySearch">
+                <form class="d-flex" action="search.html" method="get">
+                  <input 
+                    class="form-control me-2 custom-width" 
+                    type="text" 
+                    name="query" 
+                    placeholder="Search"
+                  />
+                  <button type="submit" class="btn btn-primary">搜尋</button>
                 </form>
-            </div>
+              </div>
 
             <!-- 側邊欄 -->
             <div class="offcanvas offcanvas-end offcanvas-sm" id="demo">

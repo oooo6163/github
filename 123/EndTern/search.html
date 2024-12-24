@@ -64,33 +64,29 @@
         </div>
 
     </nav>
-
     
-    <div id="product-details" class="container mt-5">
-        <div class="page">
+    <div id="search-results" class="container mt-5">
+        <h1 class="text-center">搜尋結果</h1>
+        
+        <!-- 如果有商品，顯示商品清單 -->
+        <div v-if="filteredTiles.length > 0">
             <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <img :src="product.img" class="img-fluid" alt="商品圖片">
-
-                    <p>價格：${{ product.price }}</p>
-                    <p>分類：{{ product.category }}</p>
+                <div v-for="item in filteredTiles" :key="item.id" class="col-12 col-sm-6 col-md-4">
+                    <a :href="'product.html?id=' + item.id">
+                        <img :src="item.img" class="img-fluid" alt="商品圖片">
+                        <p>{{ item.text }}</p>
+                    </a>
+                    <p>${{ item.price }}</p>
                 </div>
-
-
-                <div class="col-md-6 col-sm-12">
-
-                    <h1>{{ product.text }}</h1>
-                </div>
-                <div class="col-6">
-                    <a href="index.html" class="btn btn-secondary">返回</a>
-                </div>
-
-
             </div>
-
-
+        </div>
+        
+        <!-- 如果沒有商品，顯示提示文字 -->
+        <div v-else class="text-center">
+            <p>沒有符合條件的商品。</p>
         </div>
     </div>
+    
     <!--footer-->
     <div class="footer">
         <p>Copyright: 2011. Flash Templates </p>
@@ -102,6 +98,7 @@
     <script src="js/agency.min.js"></script>
     <!--檔名-->
     <script src="js/bs5vue1.js"></script>
+    
 </body>
 
 </html>
