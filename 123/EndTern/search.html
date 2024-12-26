@@ -74,6 +74,7 @@
                 <div v-for="item in filteredTiles" :key="item.id" class="col-12 col-sm-6 col-md-4">
                     <a :href="'product.html?id=' + item.id">
                         <img :src="item.img" class="img-fluid" alt="商品圖片">
+                        <p>{{ item.name }}</p>
                         <p>{{ item.text }}</p>
                     </a>
                     <p>${{ item.price }}</p>

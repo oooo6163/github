@@ -24,7 +24,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 
 <body id="page-top" class="index">
@@ -36,15 +37,10 @@
 
             <div class="search-bar">
                 <form class="d-flex" action="search.html" method="get">
-                  <input 
-                    class="form-control me-2 custom-width" 
-                    type="text" 
-                    name="query" 
-                    placeholder="Search"
-                  />
-                  <button type="submit" class="btn btn-primary">搜尋</button>
+                    <input class="form-control me-2 custom-width" type="text" name="query" placeholder="Search" />
+                    <button type="submit" class="btn btn-primary">搜尋</button>
                 </form>
-              </div>
+            </div>
 
             <!-- 側邊欄 -->
             <div class="offcanvas offcanvas-end offcanvas-sm" id="demo">
@@ -103,11 +99,29 @@
         </button>
     </div>
 
-
+    <!--line-->
+    <div class="line">
+        <div class="container">
+            
+        </div>
+    </div>
+    <!--hot-->
+    <div id="hot" class="hot">
+        <div class="container">
+            <h1>熱賣商品</h1>
+            <div class="row" >
+                <div v-for="item in Hot"  class="col-12  col-md-6 ">
+                    <a :href="'product.html?id=' + item.id">
+                        <img :src="item.img" class="img-fluid" alt="商品圖片">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!--shop-->
     <section id="shop" class="shop">
-        
+
         <!--menu-->
         <div class="menu">
             <ul class="nav">
@@ -136,12 +150,12 @@
         </div>
         <div class="container">
             <div class="row" v-if="filteredTiles.length > 0">
-                <div v-for="item in filteredTiles" :key="item.text" class="col-12 col-sm-6 col-md-4">
+                <div v-for="item in filteredTiles" :key="item.name" class="col-12 col-sm-6 col-md-4 product-card">
 
                     <a :href="'product.html?id=' + item.id">
                         <img :src="item.img" class="img-fluid" alt="商品圖片">
                         <br>
-                        <p>{{ item.text }}</p>
+                        <p>{{ item.name }}</p>
                     </a>
 
                     <p>${{ item.price }}</p>
