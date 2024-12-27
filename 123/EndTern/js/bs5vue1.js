@@ -146,3 +146,4 @@ createApp({
 // { id: "10", img: "img/img04.jpg",name:"商品10", text: "介紹", price: "300", category: "分類一" },
 // { id: "11", img: "img/img05.jpg",name:"商品11", text: "介紹", price: "800", category: "分類二" },
 // { id: "12", img: "img/img04.jpg",name:"商品12", text: "介紹", price: "900", category: "分類四" }
+

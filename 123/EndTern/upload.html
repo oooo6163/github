@@ -46,12 +46,12 @@
         document.getElementById('uploadForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const formData = new FormData(e.target); // 直接從表單獲取資料
-            // formData.append('id', e.target.id.value);
-            // formData.append('name', e.target.name.value);
-            // formData.append('text', e.target.text.value);
-            // formData.append('price', e.target.price.value);
-            // formData.append('category', e.target.category.value);
+            const formData = new FormData(); // 直接從表單獲取資料
+            formData.append('id', e.target.id.value);
+            formData.append('name', e.target.name.value);
+            formData.append('text', e.target.text.value);
+            formData.append('price', e.target.price.value);
+            formData.append('category', e.target.category.value);
 
 
 
