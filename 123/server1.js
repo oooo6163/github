@@ -38,7 +38,19 @@ server.get("/shop", (req, res) => {
   })
 })
 
-
+server.get("/api/product/:id", async (req, res) => {
+  try {
+    const id = req.params.id;               // 從網址路徑上取參數
+    const product = await ProductDB.findOne({ id: id });  
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+    res.json(product);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
 
 server.get('/upload', (req, res) => {
   res.sendFile(__dirname + '/EndTern/upload.html');
@@ -77,18 +89,7 @@ server.post('/api/upload', upload.array('img', 5), async (req, res) => {
   }
 });
 
-ProductDB.insert({ id: "1", img: "img/img01.jpg", name: "商品1 ", text: "介紹", price: "500", category: "分類一" },
-  { id: "2", img: "img/img02.jpg", name: "商品2", text: "介紹", price: "600", category: "分類二" },
-  { id: "3", img: "img/img03.jpg", name: "商品3", text: "介紹", price: "500", category: "分類三" },
-  { id: "4", img: "img/img04.jpg", name: "商品4", text: "介紹", price: "300", category: "分類一" },
-  { id: "5", img: "img/img05.jpg", name: "商品5", text: "介紹", price: "800", category: "分類二" },
-  { id: "6", img: "img/img04.jpg", name: "商品6", text: "介紹", price: "900", category: "分類四" },
-  { id: "7", img: "img/img01.jpg", name: "商品7", text: " 介紹", price: "500", category: "分類一" },
-  { id: "8", img: "img/img02.jpg", name: "商品8", text: "介紹", price: "600", category: "分類二" },
-  { id: "9", img: "img/img03.jpg", name: "商品9", text: "介紹", price: "500", category: "分類三" },
-  { id: "10", img: "img/img04.jpg", name: "商品10", text: "介紹", price: "300", category: "分類一" },
-  { id: "11", img: "img/img05.jpg", name: "商品11", text: "介紹", price: "800", category: "分類二" },
-  { id: "12", img: "img/img04.jpg", name: "商品12", text: "介紹", price: "900", category: "分類四" })
+
 
 
 

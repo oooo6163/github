@@ -35,9 +35,9 @@
             <a class="navbar-brand" href="index.html">超無用商品雜貨店</a>
 
             <div class="search-bar">
-                <form class="d-flex">
-                    <input class="form-control me-2 custom-width" type="text" placeholder="Search" v-model="searchQuery"
-                        @input="filterBySearch">
+                <form class="d-flex" action="search.html" method="get">
+                    <input class="form-control me-2 custom-width" type="text" name="query" placeholder="Search" />
+                    <button type="submit" class="btn btn-primary">搜尋</button>
                 </form>
             </div>
 
@@ -70,7 +70,7 @@
         <div class="page">
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-                    <img :src="product.img" class="img-fluid" alt="商品圖片">
+                    <img :src="product.img[0]" class="img-fluid" alt="商品圖片">
 
                     <p>價格：${{ product.price }}</p>
                     <p>分類：{{ product.category }}</p>
@@ -96,8 +96,37 @@
         <p>Copyright: 2011. Flash Templates </p>
         <p>Privacy Policy | Terms of Use | XHTML | CSS</p>
     </div>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
+    
+    <script>
+        const { createApp } = Vue;
+    
+        createApp({
+          data() {
+            return {
+              product: {}  // 初始為空物件
+            }
+          },
+          async created() {
+            // 1. 取得 URL 上的 id 參數
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get("id"); // 注意：若後端查的是字串，就不用 parseInt
+    
+            // 2. 發送請求到你的後端 API，如 http://localhost/api/product/1
+            try {
+              const response = await fetch(`/api/product/${productId}`);
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+              const data = await response.json();
+    
+              // 3. 賦值到 data 中的 product
+              this.product = data; 
+            } catch (error) {
+              console.error("Fetch error:", error);
+            }
+          }
+        }).mount("#product-details");
+      </script>
     <!-- Theme JavaScript -->
     <script src="js/agency.min.js"></script>
     <!--檔名-->

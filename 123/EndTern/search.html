@@ -28,78 +28,117 @@
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container">
+    <div id="app">
+        <!-- Navigation -->
+        <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+            <div class="container">
 
-            <a class="navbar-brand" href="index.html">超無用商品雜貨店</a>
+                <a class="navbar-brand" href="index.html">超無用商品雜貨店</a>
 
-            <div class="search-bar">
-                <form class="d-flex">
-                    <input class="form-control me-2 custom-width" type="text" placeholder="Search" v-model="searchQuery"
-                        @input="filterBySearch">
-                </form>
-            </div>
-
-            <!-- 側邊欄 -->
-            <div class="offcanvas offcanvas-end offcanvas-sm" id="demo">
-                <div class="offcanvas-header">
-                    <h1 class="offcanvas-title">導覽</h1>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-
+                <div class="search-bar">
+                    <form class="d-flex">
+                        <input class="form-control me-2 custom-width" type="text" placeholder="Search"
+                            v-model="searchQuery" @input="filterBySearch">
+                    </form>
                 </div>
-                <div class="offcanvas-body">
-                    <p>Some text lorem ipsum.</p>
-                    <p>Some text lorem ipsum.</p>
-                    <button class="btn btn-secondary" type="button">A Button</button>
+
+                <!-- 側邊欄 -->
+                <div class="offcanvas offcanvas-end offcanvas-sm" id="demo">
+                    <div class="offcanvas-header">
+                        <h1 class="offcanvas-title">導覽</h1>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+
+                    </div>
+                    <div class="offcanvas-body">
+                        <p>Some text lorem ipsum.</p>
+                        <p>Some text lorem ipsum.</p>
+                        <button class="btn btn-secondary" type="button">A Button</button>
+                    </div>
                 </div>
-            </div>
 
-            <!-- 側邊欄按鈕 -->
-            <div class="slidebutton">
-                <button class="btn  custom-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
-                    <i class="fa fa-bars"></i>
-                </button>
-            </div>
-        </div>
-
-    </nav>
-    
-    <div id="search-results" class="container mt-5">
-        <h1 class="text-center">搜尋結果</h1>
-        
-        <!-- 如果有商品，顯示商品清單 -->
-        <div v-if="filteredTiles.length > 0">
-            <div class="row">
-                <div v-for="item in filteredTiles" :key="item.id" class="col-12 col-sm-6 col-md-4">
-                    <a :href="'product.html?id=' + item.id">
-                        <img :src="item.img" class="img-fluid" alt="商品圖片">
-                        <p>{{ item.name }}</p>
-                        <p>{{ item.text }}</p>
-                    </a>
-                    <p>${{ item.price }}</p>
+                <!-- 側邊欄按鈕 -->
+                <div class="slidebutton">
+                    <button class="btn  custom-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
+                        <i class="fa fa-bars"></i>
+                    </button>
                 </div>
             </div>
-        </div>
-        
-        <!-- 如果沒有商品，顯示提示文字 -->
-        <div v-else class="text-center">
-            <p>沒有符合條件的商品。</p>
+
+        </nav>
+
+        <div id="search-results" class="container mt-5">
+            <h1 class="text-center">搜尋結果</h1>
+
+            <!-- 如果有商品，顯示商品清單 -->
+            <div v-if="filteredTiles.length > 0">
+                <div class="row">
+                    <div v-for="item in filteredTiles" :key="item.id" class="col-12 col-sm-6 col-md-4">
+                        <a :href="'product.html?id=' + item.id">
+                            <img :src="item.img" class="img-fluid" alt="商品圖片">
+                            <p>{{ item.name }}</p>
+
+                        </a>
+                        <p>${{ item.price }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 如果沒有商品，顯示提示文字 -->
+            <div v-else class="text-center">
+                <p>沒有符合條件的商品。</p>
+            </div>
         </div>
     </div>
-    
     <!--footer-->
     <div class="footer">
         <p>Copyright: 2011. Flash Templates </p>
         <p>Privacy Policy | Terms of Use | XHTML | CSS</p>
     </div>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    searchQuery: "",
+                    allProducts: [],
+                    filteredTiles: []
+                };
+            },
+            async created() {
+                // 1. 讀取 ?query=xxx
+                const params = new URLSearchParams(window.location.search);
+                const paramFromUrl = params.get("query")?.trim().toLowerCase() || "";
+
+                // 2. 請求商品資料
+                const res = await fetch("/shop");
+                const data = await res.json();
+                this.allProducts = data;
+
+                // 3. 直接把這個參數給 searchQuery
+                this.searchQuery = paramFromUrl;
+                // 4. 最後過濾資料
+                this.filterBySearch();
+            },
+            methods: {
+                filterBySearch() {
+                    const query = this.searchQuery.trim().toLowerCase();
+                    this.filteredTiles = this.allProducts.filter(item => {
+                        return (
+                            item.name.toLowerCase().includes(query) ||
+                            item.text.toLowerCase().includes(query)
+                        );
+                    });
+                }
+            }
+        }).mount("#app");
+    </script>
 
     <!-- Theme JavaScript -->
     <script src="js/agency.min.js"></script>
     <!--檔名-->
     <script src="js/bs5vue1.js"></script>
-    
+
 </body>
 
 </html>
