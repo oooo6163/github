@@ -41,26 +41,6 @@
                 </form>
             </div>
 
-            <!-- 側邊欄 -->
-            <div class="offcanvas offcanvas-end offcanvas-sm" id="demo">
-                <div class="offcanvas-header">
-                    <h1 class="offcanvas-title">導覽</h1>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-
-                </div>
-                <div class="offcanvas-body">
-                    <p>Some text lorem ipsum.</p>
-                    <p>Some text lorem ipsum.</p>
-                    <button class="btn btn-secondary" type="button">A Button</button>
-                </div>
-            </div>
-
-            <!-- 側邊欄按鈕 -->
-            <div class="slidebutton">
-                <button class="btn  custom-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
-                    <i class="fa fa-bars"></i>
-                </button>
-            </div>
         </div>
 
     </nav>
@@ -103,15 +83,14 @@
         createApp({
           data() {
             return {
-              product: {}  // 初始為空物件
+              product: {}  
             }
           },
           async created() {
-            // 1. 取得 URL 上的 id 參數
+            
             const params = new URLSearchParams(window.location.search);
-            const productId = params.get("id"); // 注意：若後端查的是字串，就不用 parseInt
-    
-            // 2. 發送請求到你的後端 API，如 http://localhost/api/product/1
+            const productId = params.get("id"); 
+            
             try {
               const response = await fetch(`/api/product/${productId}`);
               if (!response.ok) {
@@ -119,7 +98,7 @@
               }
               const data = await response.json();
     
-              // 3. 賦值到 data 中的 product
+          
               this.product = data; 
             } catch (error) {
               console.error("Fetch error:", error);

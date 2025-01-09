@@ -61,14 +61,17 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">分類</label>
-                <!-- 原本的 input 改成 select -->
+              
                 <select class="form-control" name="category" required>
                   <option disabled selected value="">請選擇分類</option>
                   <option value="分類一">分類一</option>
                   <option value="分類二">分類二</option>
                   <option value="分類三">分類三</option>
                   <option value="分類四">分類四</option>
-                  <!-- 可以依據實際需求增減選項 -->
+                  <option value="分類五">分類五</option>
+                  <option value="分類六">分類六</option>
+                  <option value="分類七">分類七</option>
+                  <option value="分類八">分類八</option>
                 </select>
               </div>
             <div class="mb-3">
@@ -86,7 +89,7 @@
         document.getElementById('uploadForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const formData = new FormData(); // 直接從表單獲取資料
+            const formData = new FormData(); 
             formData.append('id', e.target.id.value);
             formData.append('name', e.target.name.value);
             formData.append('text', e.target.text.value);
@@ -95,7 +98,7 @@
 
 
 
-            const files = e.target.img.files; // 修改這行
+            const files = e.target.img.files; 
             for (let i = 0; i < files.length; i++) {
                 formData.append('img', files[i]);
             }

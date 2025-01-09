@@ -18,14 +18,6 @@ var DB = require("nedb-promises");
 var ProductDB = DB.create(__dirname + "/product.db");
 
 
-//ProfolioDB.insert([
-//    { href: "#portfolioModal1", imgSrc: "img/portfolio/roundicons.png", title: "Round Icons", text: "Graphic Design" },
-//    { href: "#portfolioModal2", imgSrc: "img/portfolio/startup-framework.png", title: "Startup Framework", text: "Website Design" },
-//    { href: "#portfolioModal3", imgSrc: "img/portfolio/treehouse.png", title: "Treehouse", text: "Website Design" },
-//    { href: "#portfolioModal1", imgSrc: "img/portfolio/roundicons.png", title: "Round Icons", text: "Graphic Design" },
-//    { href: "#portfolioModal2", imgSrc: "img/portfolio/startup-framework.png", title: "Startup Framework", text: "Website Design" },
-//    { href: "#portfolioModal3", imgSrc: "img/portfolio/treehouse.png", title: "Treehouse", text: "Website Design" }
-//])
 
 server.get("/shop", (req, res) => {
   //DB
@@ -40,7 +32,7 @@ server.get("/shop", (req, res) => {
 
 server.get("/api/product/:id", async (req, res) => {
   try {
-    const id = req.params.id;               // 從網址路徑上取參數
+    const id = req.params.id;              
     const product = await ProductDB.findOne({ id: id });  
     if (!product) {
       return res.status(404).json({ error: "Product not found" });

@@ -106,18 +106,18 @@
                 };
             },
             async created() {
-                // 1. 讀取 ?query=xxx
+               
                 const params = new URLSearchParams(window.location.search);
                 const paramFromUrl = params.get("query")?.trim().toLowerCase() || "";
 
-                // 2. 請求商品資料
+                
                 const res = await fetch("/shop");
                 const data = await res.json();
                 this.allProducts = data;
 
-                // 3. 直接把這個參數給 searchQuery
+               
                 this.searchQuery = paramFromUrl;
-                // 4. 最後過濾資料
+                
                 this.filterBySearch();
             },
             methods: {

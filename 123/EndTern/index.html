@@ -169,35 +169,8 @@
     </div>
 
 
-    <!---->
-    <script>
-        // JavaScript 控制切換搜索框
-        const searchButton = document.getElementById("search-button");
-        const searchContainer = document.querySelector(".search-container");
-
-        searchButton.addEventListener("click", () => {
-            searchContainer.classList.toggle("active"); // 切換顯示搜索框
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const searchButton = document.getElementById("search-button");
-            const dynamicSearchBox = document.getElementById("dynamic-search-box");
-
-            // 點擊搜尋按鈕切換搜尋框顯示/隱藏
-            searchButton.addEventListener("click", () => {
-                dynamicSearchBox.classList.toggle("d-none");
-            });
-
-            // 點擊其他地方關閉搜尋框
-            document.addEventListener("click", (event) => {
-                if (!dynamicSearchBox.contains(event.target) && !searchButton.contains(event.target)) {
-                    dynamicSearchBox.classList.add("d-none");
-                }
-            });
-        });
-
-    </script>
+    
+   
 
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
