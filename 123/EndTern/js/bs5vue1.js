@@ -49,12 +49,12 @@ $.ajax({
         scrollTrigger: {
           trigger: ".product-card",
           start: "top 80%",
-          end:"top 1%",
-          //markers: true,  
+          //end:"top 1%",
+         // markers: true,  
           scrub: 1,
           toggleActions: "play none none none"
         },
-        y: 50,
+        y: 200,
         opacity: 0,
         stagger: 0.2
       });

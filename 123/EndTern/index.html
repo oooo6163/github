@@ -46,7 +46,7 @@
             <div class="offcanvas offcanvas-end offcanvas-sm" id="demo">
                 <div class="offcanvas-header">
                     <h1 class="offcanvas-title">刊登商品</h1>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+                   <!--  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button> -->
 
                 </div>
                 <div class="offcanvas-body">                  
@@ -144,7 +144,7 @@
         </div>
         <div class="container">
             <div class="row" v-if="filteredTiles.length > 0">
-                <div v-for="item in filteredTiles" :key="item.name" class="col-12 col-sm-6 col-md-4 product-card">
+                <div v-for="item in filteredTiles" :key="item.name" class="col-xs-4 col-sm-6 col-md-4 product-card">
 
                     <a :href="'product.html?id=' + item.id">
                         <img :src="item.img" class="img-fluid" alt="商品圖片">

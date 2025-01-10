@@ -32,6 +32,7 @@
 </head>
 
 <body>
+
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container">
@@ -39,57 +40,63 @@
         </div>
 
     </nav>
-    <div class="container mt-5">
-        <form id="uploadForm" enctype="multipart/form-data">
 
-            <div class="mb-3">
-                <label class="form-label">id</label>
-                <input type="text" class="form-control" name="id" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">名稱</label>
-                <input type="text" class="form-control" name="name" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">介紹</label>
-                <textarea type="text" class="form-control" name="text" required></textarea>
-            </div>
 
-            <div class="mb-3">
-                <label class="form-label">價格</label>
-                <input class="form-control" name="price" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">分類</label>
-              
-                <select class="form-control" name="category" required>
-                  <option disabled selected value="">請選擇分類</option>
-                  <option value="分類一">分類一</option>
-                  <option value="分類二">分類二</option>
-                  <option value="分類三">分類三</option>
-                  <option value="分類四">分類四</option>
-                  <option value="分類五">分類五</option>
-                  <option value="分類六">分類六</option>
-                  <option value="分類七">分類七</option>
-                  <option value="分類八">分類八</option>
-                </select>
-              </div>
-            <div class="mb-3">
-                <label class="form-label">圖片</label>
-                <input type="file" class="form-control" name="img" multiple accept="image/*">
-            </div>
 
-            <button type="submit" class="btn btn-primary">提交</button>
-        </form>
-    </div>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="mb-3 col-12">
+                    <label class="form-label">id</label>
+                    <input type="text" class="form-control" name="id" required>
+                </div>
+                <div class="mb-3 col-12">
+                    <label class="form-label">名稱</label>
+                    <input type="text" class="form-control" name="name" required>
+                </div>
+                <div class="mb-3 col-12">
+                    <label class="form-label">介紹</label>
+                    <textarea type="text" class="form-control" name="text" required></textarea>
+                </div>
 
-   
+                <div class="mb-3 col-12">
+                    <label class="form-label">價格</label>
+                    <input class="form-control" name="price" required>
+                </div>
+                <div class="mb-3col-12">
+                    <label class="form-label">分類</label>
+
+                    <select class="form-control" name="category" required>
+                        <option disabled selected value="">請選擇分類</option>
+                        <option value="分類一">分類一</option>
+                        <option value="分類二">分類二</option>
+                        <option value="分類三">分類三</option>
+                        <option value="分類四">分類四</option>
+                        <option value="分類五">分類五</option>
+                        <option value="分類六">分類六</option>
+                        <option value="分類七">分類七</option>
+                        <option value="分類八">分類八</option>
+                    </select>
+                </div>
+                <div class="mb-3 col-3">
+                    <label class="form-label">圖片</label>
+                    <input type="file" class="form-control" name="img" multiple accept="image/*">
+                </div>
+
+                <button type="submit" class="btn btn-primary ">提交</button>
+
+            </div>
+        </div>
+    </form>
+
+
+
 
     <script>
         document.getElementById('uploadForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const formData = new FormData(); 
+            const formData = new FormData();
             formData.append('id', e.target.id.value);
             formData.append('name', e.target.name.value);
             formData.append('text', e.target.text.value);
@@ -98,7 +105,7 @@
 
 
 
-            const files = e.target.img.files; 
+            const files = e.target.img.files;
             for (let i = 0; i < files.length; i++) {
                 formData.append('img', files[i]);
             }
